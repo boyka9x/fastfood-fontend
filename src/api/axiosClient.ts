@@ -3,7 +3,8 @@ import jwt_decode, { JwtPayload } from 'jwt-decode';
 import { useAppDispatch } from '../app/hooks';
 import { authActions } from '../features/auth/authSlice';
 
-const BASE_URL = 'http://localhost:5000/api';
+// const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL_HOST = 'https://fast-food-boyka.herokuapp.com/api';
 
 interface AxiosRequestCustom extends AxiosRequestConfig {
   retry?: boolean;
@@ -14,14 +15,14 @@ interface JwtPayloadCustom extends JwtPayload {
 }
 
 export const axiosPublic = axios.create({
-  baseURL: BASE_URL,
+  baseURL: BASE_URL_HOST,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
 const axiosPrivate = axios.create({
-  baseURL: BASE_URL,
+  baseURL: BASE_URL_HOST,
   headers: {
     'Content-Type': 'application/json',
   },
