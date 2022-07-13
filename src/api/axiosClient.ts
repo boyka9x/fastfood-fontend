@@ -1,6 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import jwt_decode, { JwtPayload } from 'jwt-decode';
-import { useAppDispatch } from '../app/hooks';
+import { browserHistory } from '../app/history';
+import { store } from '../app/store';
 import { authActions } from '../features/auth/authSlice';
 
 // const BASE_URL = 'http://localhost:5000/api';
@@ -60,10 +61,10 @@ axiosPrivate.interceptors.response.use(
           prevRequest.headers!.Authorization = `Bearer ${response.data}`;
           return axiosPrivate(prevRequest);
         }
+        store.dispatch(authActions.logout());
       }
 
-      const dispatch = useAppDispatch();
-      dispatch(authActions.logout());
+      browserHistory.push('/login');
     }
     return Promise.reject(error);
   }

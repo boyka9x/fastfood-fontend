@@ -7,7 +7,6 @@ import { cartActions, CartOrder } from './cartSlice';
 
 function* handleOrder(action: PayloadAction<CartOrder>) {
   try {
-    console.log('hello');
     const response: DataResponse<null> = yield call(orderApi.create, action.payload);
     if (response.status === 'success') {
       yield put(cartActions.orderSuccess());
