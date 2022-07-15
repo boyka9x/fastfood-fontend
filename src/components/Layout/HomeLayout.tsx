@@ -2,6 +2,7 @@ import { Box } from '@mui/material';
 import { Route, Routes } from 'react-router-dom';
 import CartPage from '../../features/cart/pages/CartPage';
 import HomePage from '../../features/home/pages/HomePage';
+import CustomerOrderPage from '../../features/order/pages/CustomerOrderPage';
 import { HomeSideBar } from '../Common/HomeSideBar';
 import MainBar from '../Common/MainBar';
 
@@ -28,6 +29,7 @@ export default function HomeLayout(props: IHomeLayoutProps) {
         <Routes>
           <Route index element={<HomePage />} />
           <Route path='cart' element={<CartPage />} />
+          <Route path='my-order' element={<CustomerOrderPage />} />
         </Routes>
       </Box>
     </Box>
