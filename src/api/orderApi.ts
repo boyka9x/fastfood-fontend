@@ -19,19 +19,19 @@ const orderApi = {
     const url = `/orders/${id}`;
     return axiosPrivate.get(url);
   },
-  confirm(id: string): Promise<DataResponse<null>> {
+  confirm(id: string): Promise<DataResponse<Order>> {
     const url = `/orders/${id}/confirm`;
     return axiosPrivate.patch(url);
   },
-  shipping(id: string): Promise<DataResponse<null>> {
+  shipping(id: string): Promise<DataResponse<Order>> {
     const url = `/orders/${id}/shipping`;
     return axiosPrivate.patch(url);
   },
-  payment(id: string): Promise<DataResponse<null>> {
+  payment(id: string): Promise<DataResponse<Order>> {
     const url = `/orders/${id}/payment`;
     return axiosPrivate.patch(url);
   },
-  complete(id: string): Promise<DataResponse<null>> {
+  complete(id: string): Promise<DataResponse<Order>> {
     const url = `/orders/${id}/complete`;
     return axiosPrivate.patch(url);
   },

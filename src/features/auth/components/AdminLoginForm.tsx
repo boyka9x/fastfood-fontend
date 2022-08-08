@@ -3,7 +3,7 @@ import { Alert, Box, Button } from '@mui/material';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import InputField from '../../../components/FormFields/InputText';
+import InputField from '../../../components/FormFields/InputField';
 import { LoginPayload } from '../authSlice';
 
 export interface LoginFormProps {

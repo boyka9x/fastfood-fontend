@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 import { Category, ListResponse } from '../../models';
 
@@ -35,6 +35,13 @@ export const categoryActions = categorySlice.actions;
 // Selectors
 export const selectCategoryLoading = (state: RootState) => state.category.loading;
 export const selectCategoryList = (state: RootState) => state.category.list;
+
+export const selectCategoryOptions = createSelector(selectCategoryList, (list: Category[]) => {
+  return list.map((category: Category) => ({
+    label: category.name,
+    value: category._id as string,
+  }));
+});
 
 // Reducer
 const categoryReducer = categorySlice.reducer;

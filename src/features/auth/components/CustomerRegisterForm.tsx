@@ -3,7 +3,7 @@ import { Alert, Box, Button, CircularProgress } from '@mui/material';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import InputField from '../../../components/FormFields/InputText';
+import InputField from '../../../components/FormFields/InputField';
 import { Customer } from '../../../models/customer';
 import { phoneRegex } from '../../../utils';
 

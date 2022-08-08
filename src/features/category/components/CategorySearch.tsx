@@ -5,20 +5,24 @@ import * as React from 'react';
 import { Category } from '../../../models';
 
 export interface CategorySearchProps {
+  initialValues?: string;
   categoryList: Category[];
   onChange?: (category: Category) => void;
 }
 
-export default function CategorySearch({ categoryList, onChange }: CategorySearchProps) {
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
+export default function CategorySearch({
+  categoryList,
+  onChange,
+  initialValues,
+}: CategorySearchProps) {
+  const [selectedCategory, setSelectedCategory] = React.useState(initialValues);
   const contentWrapper = React.useRef<HTMLOListElement>(null);
 
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    category: Category,
-    index: number
+    category: Category
   ) => {
-    setSelectedIndex(index);
+    setSelectedCategory(category._id);
 
     if (!onChange) return;
     onChange(category);
@@ -39,15 +43,15 @@ export default function CategorySearch({ categoryList, onChange }: CategorySearc
         sx={{
           display: 'flex',
           overflowX: 'hidden',
-          p: 0,
         }}
         ref={contentWrapper}
       >
-        {categoryList.map((category, index) => {
+        {categoryList.map((category) => {
           return (
             <ListItemButton
-              key={index}
+              key={category._id}
               sx={{
+                flex: '0 0 120px',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
@@ -55,11 +59,10 @@ export default function CategorySearch({ categoryList, onChange }: CategorySearc
                 backgroundColor: 'background.paper',
                 borderRadius: '4px',
                 maxHeight: '78px',
-                flex: '0 0 120px',
                 mr: 2,
               }}
-              selected={selectedIndex === index}
-              onClick={(event) => handleListItemClick(event, category, index)}
+              selected={selectedCategory === category._id}
+              onClick={(event) => handleListItemClick(event, category)}
             >
               <Avatar sx={{ width: 30, height: 30 }} src={category.image} />
               <ListItemText primary={category.name} />

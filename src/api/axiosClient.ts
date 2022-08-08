@@ -4,8 +4,8 @@ import { browserHistory } from '../app/history';
 import { store } from '../app/store';
 import { authActions } from '../features/auth/authSlice';
 
-// const BASE_URL = 'http://localhost:5000/api';
-const BASE_URL_HOST = 'https://fast-food-boyka.herokuapp.com/api';
+const BASE_URL_HOST = 'http://localhost:5000/api';
+// const BASE_URL_HOST = 'https://fast-food-boyka.herokuapp.com/api';
 
 interface AxiosRequestCustom extends AxiosRequestConfig {
   retry?: boolean;
@@ -28,11 +28,11 @@ const axiosPrivate = axios.create({
     'Content-Type': 'application/json',
   },
 });
+const accessToken = localStorage.getItem('access_token');
 
 axiosPrivate.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    const accessToken = localStorage.getItem('access_token');
-    if (accessToken) {
+    if (!config.headers!.Authorization) {
       config.headers!.Authorization = `Bearer ${accessToken}`;
     }
 
@@ -57,7 +57,14 @@ axiosPrivate.interceptors.response.use(
         const { exp, type } = jwt_decode<JwtPayloadCustom>(refreshToken);
 
         if (exp && exp * 1000 > Date.now()) {
-          const response = await axiosPrivate.post(`/${type}s/token`, { refreshToken });
+          let response: any;
+          if (type === 'customer') {
+            response = await axiosPrivate.post(`/${type}s/token`, { refreshToken });
+          }
+          if (type === 'admin' || type === 'staff') {
+            response = await axiosPrivate.post(`/employees/token`, { refreshToken });
+          }
+          localStorage.setItem('access_token', response.data);
           prevRequest.headers!.Authorization = `Bearer ${response.data}`;
           return axiosPrivate(prevRequest);
         }

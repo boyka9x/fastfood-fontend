@@ -11,10 +11,18 @@ import MenuItem from '@mui/material/MenuItem';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
+import { useAppDispatch } from '../../app/hooks';
+import { authActions } from '../../features/auth/authSlice';
+import { Customer } from '../../models';
 
-export default function CustomizeMenu() {
+export interface CustomizeMenuProps {
+  user?: Customer;
+}
+
+export default function CustomizeMenu({ user }: CustomizeMenuProps) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const dispatch = useAppDispatch();
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -22,10 +30,17 @@ export default function CustomizeMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleLogout = () => {
+    dispatch(authActions.logout());
+  };
+
   return (
     <React.Fragment>
-      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', ml: 3 }}>
-        <Typography variant='body1'>Boyka</Typography>
+      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', ml: 1 }}>
+        <Typography noWrap variant='body1'>
+          {user?.username}
+        </Typography>
         <Tooltip title='Account settings'>
           <IconButton
             onClick={handleClick}
@@ -35,7 +50,9 @@ export default function CustomizeMenu() {
             aria-haspopup='true'
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+            <Avatar sx={{ width: 32, height: 32 }} src={user?.image}>
+              {user?.image ? undefined : user?.username.charAt(0)}
+            </Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -93,7 +110,7 @@ export default function CustomizeMenu() {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <Logout fontSize='small' />
           </ListItemIcon>

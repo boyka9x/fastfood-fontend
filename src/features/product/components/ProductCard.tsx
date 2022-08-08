@@ -1,11 +1,12 @@
 import AddIcon from '@mui/icons-material/Add';
 import EuroIcon from '@mui/icons-material/Euro';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
-import { Box, IconButton, Rating } from '@mui/material';
+import { Box, IconButton, Link, Rating } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Product } from '../../../models';
+import { Link as RouterLink } from 'react-router-dom';
 
 export interface ProductCardProps {
   product: Product;
@@ -32,15 +33,22 @@ export default function ProductCard({ product, onSelect }: ProductCardProps) {
         height='120'
         image={product.image}
       />
-      <Typography
-        noWrap
-        sx={{
-          mt: 1,
-          fontWeight: 'bold',
-        }}
+      <Link
+        to={`/products/${product.slug}`}
+        component={RouterLink}
+        color='inherit'
+        underline='none'
       >
-        {product.name}
-      </Typography>
+        <Typography
+          noWrap
+          sx={{
+            mt: 1,
+            fontWeight: 'bold',
+          }}
+        >
+          {product.name}
+        </Typography>
+      </Link>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <Rating name='size-small' defaultValue={2} size='small' />

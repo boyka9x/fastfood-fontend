@@ -76,7 +76,8 @@ export default function CartPage() {
         sx={{
           width: '100%',
           display: 'flex',
-          minHeight: '200px',
+          minHeight: '140px',
+          maxHeight: '280px',
           alignItems: 'center',
           flexDirection: 'column',
           justifyContent: 'space-between',

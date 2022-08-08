@@ -35,7 +35,7 @@ export default function OrderFilter({ filter, onChange, onSearchChange }: IOrder
     const newFilter = {
       ...filter,
       _page: 1,
-      _id: e.target.value,
+      id: e.target.value,
     };
 
     onSearchChange(newFilter);
@@ -74,7 +74,7 @@ export default function OrderFilter({ filter, onChange, onSearchChange }: IOrder
       ...filter,
       _page: 1,
       status: '',
-      _id: undefined,
+      id: undefined,
       order_date: undefined,
     };
 
@@ -96,7 +96,7 @@ export default function OrderFilter({ filter, onChange, onSearchChange }: IOrder
               id='searchByID'
               label='Search by ID'
               endAdornment={<Search />}
-              defaultValue={filter?._id}
+              defaultValue={filter?.id}
               onChange={handleSearchChange}
               inputRef={searchRef}
             />

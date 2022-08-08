@@ -89,7 +89,7 @@ export default function CollapsibleRow({ row, onRemove }: CollapsibleRowProps) {
                       <TableCell align='right'>{product.price}</TableCell>
                       <TableCell align='right'>{product.quantity}</TableCell>
                       <TableCell align='center'>
-                        <Link component={RouterLink} to={`/products/${product.productId}`}>
+                        <Link component={RouterLink} to={`/products/${product.productId.slug}`}>
                           <IconButton size='small'>
                             <InfoIcon fontSize='inherit' color='primary' />
                           </IconButton>

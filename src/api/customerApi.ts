@@ -8,6 +8,10 @@ const customerApi = {
     const url = `/customers/profile`;
     return axiosPrivate.get(url);
   },
+  getById(id: string): Promise<DataResponse<Customer>> {
+    const url = `/customers/${id}`;
+    return axiosPrivate.get(url);
+  },
   register(data: Customer): Promise<DataResponse<null>> {
     const url = `/customers/register`;
     return axiosPrivate.post(url, data);

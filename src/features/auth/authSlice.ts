@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 import { Customer } from '../../models/customer';
+import { Employee } from '../../models/employee';
 
 export interface LoginPayload {
   email?: string;
@@ -12,7 +13,7 @@ export interface LoginPayload {
 export interface IAuthState {
   isLoggedIn: boolean;
   loading: boolean;
-  currentUser?: Customer;
+  currentUser?: Customer | Employee;
 }
 
 const initialState: IAuthState = {
@@ -36,7 +37,7 @@ const authSlice = createSlice({
       state.loading = false;
     },
 
-    setUser: (state, action: PayloadAction<Customer>) => {
+    setUser: (state, action: PayloadAction<Customer | Employee>) => {
       state.currentUser = action.payload;
     },
     logout: (state) => {

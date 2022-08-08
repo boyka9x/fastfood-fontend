@@ -12,7 +12,7 @@ import {
   selectProductFilter,
   selectProductList,
   selectProductPagination,
-} from '../productReducer';
+} from '../productSlice';
 
 export default function CardsPage() {
   const dispatch = useAppDispatch();
@@ -28,7 +28,7 @@ export default function CardsPage() {
   }, [dispatch, filter]);
 
   const handleCategoryChange = (category: Category) => {
-    dispatch(productActions.setFilters({ ...filter, type: category._id }));
+    dispatch(productActions.setFilters({ ...filter, type: category._id, _page: 1 }));
   };
 
   const handleProductSelect = (product: Product) => {
@@ -63,7 +63,11 @@ export default function CardsPage() {
       </Typography>
 
       {/* Filter */}
-      <CategorySearch categoryList={categoryList} onChange={handleCategoryChange} />
+      <CategorySearch
+        initialValues={filter?.type}
+        categoryList={categoryList}
+        onChange={handleCategoryChange}
+      />
 
       <Grid mt={1} container spacing={2}>
         {productList.map((product) => {

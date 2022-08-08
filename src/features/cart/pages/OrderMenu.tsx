@@ -29,9 +29,9 @@ export default function OrderMenu() {
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
-        minWidth: '320px',
+        minWidth: '300px',
         minHeight: '100%',
-        p: 1,
+        ml: 2,
       }}
     >
       <PaymentCard />
