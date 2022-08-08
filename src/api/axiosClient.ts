@@ -4,8 +4,8 @@ import { browserHistory } from '../app/history';
 import { store } from '../app/store';
 import { authActions } from '../features/auth/authSlice';
 
-const BASE_URL_HOST = 'http://localhost:5000/api';
-// const BASE_URL_HOST = 'https://fast-food-boyka.herokuapp.com/api';
+// const BASE_URL_HOST = 'http://localhost:5000/api';
+const BASE_URL_HOST = 'https://fast-food-boyka.herokuapp.com/api';
 
 interface AxiosRequestCustom extends AxiosRequestConfig {
   retry?: boolean;
