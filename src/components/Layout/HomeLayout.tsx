@@ -13,7 +13,7 @@ export default function HomeLayout(props: IHomeLayoutProps) {
         gridTemplateRows: 'auto 1fr',
         gridTemplateColumns: 'auto 1fr',
         gridTemplateAreas: `"header header" "sidebar main"`,
-        minHeight: '100vh',
+        height: '100vh',
       }}
     >
       <Box sx={{ gridArea: 'header' }}>
@@ -22,7 +22,7 @@ export default function HomeLayout(props: IHomeLayoutProps) {
       <Box sx={{ gridArea: 'sidebar' }}>
         <HomeSideBar />
       </Box>
-      <Box sx={{ gridArea: 'main', margin: 2 }}>
+      <Box sx={{ gridArea: 'main', p: 2, overflow: 'auto' }}>
         <Outlet />
       </Box>
     </Box>
