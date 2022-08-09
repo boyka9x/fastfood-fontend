@@ -34,7 +34,7 @@ export default function AdminLayout() {
       >
         <AdminSideBar />
       </Box>
-      <Box sx={{ gridArea: 'main', overflowY: 'auto', m: 2 }}>
+      <Box sx={{ gridArea: 'main', overflowY: 'auto', p: 2 }}>
         <Outlet />
       </Box>
     </Box>
