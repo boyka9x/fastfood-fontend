@@ -75,12 +75,14 @@ export function HomeSideBar() {
             </NavLinkCustomize>
           </ListItem>
         </List>
-        <Tooltip title='Logout' placement='right'>
-          <IconButton onClick={handleLogoutClick}>
-            <LogoutIcon fontSize='large' />
-          </IconButton>
-        </Tooltip>
       </nav>
+
+      {/* Action: logout */}
+      <Tooltip title='Logout' placement='right'>
+        <IconButton onClick={handleLogoutClick}>
+          <LogoutIcon fontSize='large' />
+        </IconButton>
+      </Tooltip>
     </Box>
   );
 }
