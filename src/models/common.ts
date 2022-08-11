@@ -30,3 +30,5 @@ export interface Token {
   accessToken: string;
   refreshToken: string;
 }
+
+export type OrderStatus = 'order' | 'transaction' | 'shipping' | 'complete';

@@ -1,4 +1,5 @@
-import { IconButton } from '@mui/material';
+import PageviewIcon from '@mui/icons-material/Pageview';
+import { Box, IconButton } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -7,8 +8,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Order } from '../../../models';
-import { formatDate } from '../../../utils';
-import PageviewIcon from '@mui/icons-material/Pageview';
+import { formatDate, getStatusColor } from '../../../utils';
 
 export interface CollapsibleTableProps {
   orderList: Order[];
@@ -43,7 +43,9 @@ export default function OrderTable({ orderList, onView }: CollapsibleTableProps)
               <TableCell align='right'>{formatDate(order.shipmentDate)}</TableCell>
               <TableCell align='right'>{formatDate(order.paymentDate)}</TableCell>
               <TableCell align='right'>{order.totalPrice}</TableCell>
-              <TableCell align='right'>{order.status}</TableCell>
+              <TableCell align='right'>
+                <Box color={getStatusColor(order.status)}>{order.status}</Box>
+              </TableCell>
               <TableCell align='right'>
                 <IconButton size='small' color='primary' onClick={() => handleViewClick(order)}>
                   <PageviewIcon fontSize='inherit' color='inherit' />

@@ -1,3 +1,4 @@
+import { OrderStatus } from './common';
 import { Product } from './product';
 
 export interface OrderProduct {
@@ -19,7 +20,7 @@ export interface Order {
   customerId?: string;
   employeeId?: string;
   products: OrderProduct[];
-  status: string;
+  status: OrderStatus;
 
   createdAt?: string;
   updatedAt?: string;

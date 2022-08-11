@@ -18,6 +18,7 @@ import Product from './features/product';
 import ListPage from './features/product/pages/ListPage';
 import RestoreListPage from './features/product/pages/RestoreListPage';
 import AdminListPage from './features/order/pages/AdminListPage';
+import Employee from './features/employee';
 
 // const Customer_Role = 'customer';
 // const Staff_Role = 'staff';
@@ -58,6 +59,7 @@ function App() {
             <Route path='restore' element={<RestoreListPage />} />
             <Route path=':productSlug' element={<AddEditPage />} />
           </Route>
+          <Route path='employees/*' element={<Employee />} />
         </Route>
       </Route>
 

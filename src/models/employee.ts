@@ -4,7 +4,7 @@ export interface Employee {
   email: string;
   phoneNumber: string;
   password?: string;
-  confirmPassword?: string;
+  passwordConfirm?: string;
   address?: string;
   image?: string;
 

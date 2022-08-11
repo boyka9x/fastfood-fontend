@@ -12,8 +12,12 @@ const employeeApi = {
     const url = '/employees/deleted';
     return axiosPrivate.get(url, { params });
   },
-  getById(): Promise<DataResponse<Employee>> {
+  auth(): Promise<DataResponse<Employee>> {
     const url = '/employees/auth';
+    return axiosPrivate.get(url);
+  },
+  getById(id: string): Promise<DataResponse<Employee>> {
+    const url = `/employees/${id}`;
     return axiosPrivate.get(url);
   },
   register(data: Partial<Employee>): Promise<DataResponse<null>> {
@@ -26,7 +30,7 @@ const employeeApi = {
   },
   update(data: Partial<Employee>): Promise<DataResponse<null>> {
     const url = '/employees';
-    return axiosPrivate.put(url, data);
+    return axiosPrivate.post(url, data);
   },
   delete(id: string): Promise<DataResponse<null>> {
     const url = `/employees/${id}`;

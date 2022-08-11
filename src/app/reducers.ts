@@ -7,6 +7,7 @@ import productReducer from '../features/product/productSlice';
 import cartReducer from '../features/cart/cartSlice';
 import orderReducer from '../features/order/orderSlice';
 import dashboardReducer from '../features/dashboard/dashboardSlice';
+import employeeReducer from '../features/employee/employeeSlice';
 
 export const rootReducer = combineReducers({
   router: createRouterReducer(browserHistory),
@@ -16,4 +17,5 @@ export const rootReducer = combineReducers({
   cart: cartReducer,
   order: orderReducer,
   dashboard: dashboardReducer,
+  employee: employeeReducer,
 });

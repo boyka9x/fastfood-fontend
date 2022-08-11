@@ -11,7 +11,7 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { Order } from '../../../models';
-import { formatDate } from '../../../utils';
+import { formatDate, getStatusColor } from '../../../utils';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import PaidIcon from '@mui/icons-material/Paid';
 import InfoIcon from '@mui/icons-material/Info';
@@ -46,7 +46,9 @@ export default function CollapsibleRow({ row, onRemove }: CollapsibleRowProps) {
         <TableCell align='right'>{formatDate(row.shipmentDate)}</TableCell>
         <TableCell align='right'>{formatDate(row.paymentDate)}</TableCell>
         <TableCell align='right'>{row.totalPrice}</TableCell>
-        <TableCell align='right'>{row.status}</TableCell>
+        <TableCell align='right'>
+          <Box color={getStatusColor(row.status)}>{row.status}</Box>
+        </TableCell>
         <TableCell align='right'>
           {
             <IconButton size='small' color='secondary' disabled={Boolean(row.shipmentDate)}>

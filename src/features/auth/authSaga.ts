@@ -14,7 +14,7 @@ function* fetchCustomer() {
 }
 
 function* fetchEmployee() {
-  const response: DataResponse<Employee> = yield call(employeeApi.getById);
+  const response: DataResponse<Employee> = yield call(employeeApi.auth);
   yield put(authActions.setUser(response.data));
 }
 
