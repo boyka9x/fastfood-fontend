@@ -11,7 +11,7 @@ export interface CartList {
 }
 
 export interface CartOrder {
-  products: CartProduct[];
+  products: Partial<CartProduct>[];
   comments?: string;
 }
 

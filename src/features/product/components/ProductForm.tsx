@@ -75,7 +75,7 @@ export default function ProductForm({ initialValues, onSubmit }: IProductFormPro
 
         <Box mt={2} sx={{ display: 'flex', justifyContent: 'center' }}>
           <Button type='submit' variant='contained' sx={{ width: '120px' }}>
-            {isSubmitting && <CircularProgress />}Save
+            {isSubmitting && <CircularProgress size='small' />}Save
           </Button>
         </Box>
       </form>

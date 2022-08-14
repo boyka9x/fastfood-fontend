@@ -3,7 +3,7 @@ import { DataResponse, ListParams, ListResponse, Order } from '../models';
 import axiosPrivate from './axiosClient';
 
 const orderApi = {
-  create(data: CartOrder): Promise<DataResponse<null>> {
+  create(data: Partial<CartOrder>): Promise<DataResponse<null>> {
     const url = '/orders';
     return axiosPrivate.post(url, data);
   },

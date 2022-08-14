@@ -53,7 +53,11 @@ export default function CartPage() {
 
   const handleOrderSubmit = () => {
     if (cartMap.length < 1) return toast.error('Empty product!');
-    dispatch(cartActions.order({ products: cartMap, comments: comment }));
+    const products = cartMap.map((product) => {
+      let { _id, name, price, priceDiscount, quantity } = product;
+      return { _id, name, price, priceDiscount, quantity };
+    });
+    dispatch(cartActions.order({ products, comments: comment }));
   };
 
   const handleClearAll = () => {
