@@ -111,7 +111,7 @@ export default function CartPage() {
       <TextField
         fullWidth
         id='filled-textarea'
-        label='Comment'
+        label='Note'
         multiline
         variant='standard'
         color='primary'

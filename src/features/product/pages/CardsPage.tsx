@@ -1,4 +1,4 @@
-import { Box, Grid, LinearProgress, Pagination, Typography } from '@mui/material';
+import { Box, Grid, IconButton, LinearProgress, Pagination, Typography } from '@mui/material';
 import * as React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { Category, Product } from '../../../models';
@@ -6,6 +6,7 @@ import { cartActions } from '../../cart/cartSlice';
 import { selectCategoryList } from '../../category/categorySlice';
 import CategorySearch from '../../category/components/CategorySearch';
 import ProductCard from '../components/ProductCard';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import {
   productActions,
   selectIsLoading,
@@ -39,6 +40,10 @@ export default function CardsPage() {
     dispatch(productActions.setFilters({ ...filter, _page: value }));
   };
 
+  const handleFilterClear = () => {
+    dispatch(productActions.setFilters({ _page: 1, _limit: 8 }));
+  };
+
   return (
     <Box
       sx={{
@@ -58,9 +63,21 @@ export default function CardsPage() {
       )}
 
       {/* Header */}
-      <Typography variant='h5' component='h1'>
-        Menu Category
-      </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+        <Typography variant='h5' component='h1'>
+          Menu Category
+        </Typography>
+
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Typography variant='subtitle2' component='span' color='primary'>
+            View all
+          </Typography>
+
+          <IconButton size='small' color='primary' onClick={handleFilterClear}>
+            <CheckBoxIcon fontSize='inherit' />
+          </IconButton>
+        </Box>
+      </Box>
 
       {/* Filter */}
       <CategorySearch

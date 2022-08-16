@@ -51,7 +51,7 @@ export default function CollapsibleRow({ row, onRemove }: CollapsibleRowProps) {
         </TableCell>
         <TableCell align='right'>
           {
-            <IconButton size='small' color='secondary' disabled={Boolean(row.shipmentDate)}>
+            <IconButton size='small' color='secondary' disabled={Boolean(row.paymentDate)}>
               <PaidIcon />
             </IconButton>
           }

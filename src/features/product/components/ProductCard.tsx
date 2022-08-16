@@ -1,12 +1,13 @@
 import AddIcon from '@mui/icons-material/Add';
 import EuroIcon from '@mui/icons-material/Euro';
-import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { Box, IconButton, Link, Rating } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Product } from '../../../models';
 import { Link as RouterLink } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export interface ProductCardProps {
   product: Product;
@@ -19,10 +20,14 @@ export default function ProductCard({ product, onSelect }: ProductCardProps) {
     onSelect(product);
   };
 
+  const handleFavoriteClick = () => {
+    toast.success('Features will be complete soon.');
+  };
+
   return (
     <Card sx={{ px: 2, py: 1, position: 'relative' }}>
-      <IconButton sx={{ position: 'absolute', top: 0, right: 0, color: '#ff0000' }}>
-        <LocalFireDepartmentIcon fontSize='small' color='error' />
+      <IconButton sx={{ position: 'absolute', top: 0, right: 0, color: '#e41a27' }}>
+        <FavoriteBorderIcon fontSize='small' color='inherit' onClick={handleFavoriteClick} />
       </IconButton>
       <CardMedia
         sx={{

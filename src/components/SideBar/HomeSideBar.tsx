@@ -28,9 +28,10 @@ export function HomeSideBar() {
     <Box
       sx={{
         display: { xs: 'none', sm: 'flex' },
-        px: 1,
         flexDirection: 'column',
+        px: 1,
         justifyContent: 'space-between',
+        height: '100%',
       }}
     >
       <nav aria-label='main mailbox folders'>

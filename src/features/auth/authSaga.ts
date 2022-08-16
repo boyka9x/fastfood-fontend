@@ -76,7 +76,7 @@ function* handleLogout() {
   if (role === 'admin') {
     yield put(push('/admin/login'));
   } else {
-    yield put(push('/login'));
+    yield put(push('/'));
   }
 
   localStorage.removeItem('role');
