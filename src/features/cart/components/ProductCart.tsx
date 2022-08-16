@@ -42,6 +42,7 @@ export default function ProductCart({
         alignItems: 'center',
         my: 1,
         maxHeight: '56px',
+        width: '100%',
       }}
     >
       <Box sx={{ p: 1, bgcolor: 'primary.main' }}>
@@ -49,7 +50,7 @@ export default function ProductCart({
       </Box>
 
       {/* Content */}
-      <Box sx={{ display: 'flex', flexDirection: 'column', px: '4px' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', px: '4px', maxWidth: '200px' }}>
         <Typography noWrap>{product.name}</Typography>
         {product.priceDiscount ? (
           <Box>

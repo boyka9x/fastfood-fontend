@@ -26,7 +26,15 @@ export default function HomePage() {
         <Banner />
         <CardsPage />
       </Box>
-      <Box sx={{ gridArea: 'cart', height: '85vh', position: 'sticky', right: '0', top: '0' }}>
+      <Box
+        sx={{
+          gridArea: 'cart',
+          height: '85vh',
+          position: 'sticky',
+          right: '0',
+          top: '0',
+        }}
+      >
         <OrderMenu />
       </Box>
     </Box>

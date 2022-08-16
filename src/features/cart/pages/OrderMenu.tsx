@@ -29,7 +29,7 @@ export default function OrderMenu() {
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
-        minWidth: '300px',
+        width: '300px',
         minHeight: '100%',
         ml: 2,
       }}
@@ -59,7 +59,7 @@ export default function OrderMenu() {
             </IconButton>
           </Tooltip>
         </Box>
-        <Box sx={{ flexGrow: 1, overflowY: 'auto', minWidth: '100%' }}>
+        <Box sx={{ flexGrow: 1, overflowY: 'auto', width: '100%' }}>
           {cartMap.map((cart) => {
             return <ProductCart key={cart._id} product={cart} onRemove={handleRemoveProduct} />;
           })}
